@@ -1494,6 +1494,9 @@ public class PatternBuilder {
 	// Boundary matchers
 	
 	/**
+	 * Continues the description of the pattern inserting the beginning of line
+	 * matcher "^".
+	 * 
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -1504,6 +1507,9 @@ public class PatternBuilder {
 	}
 
 	/**
+	 * Starts the description of the pattern inserting the beginning of line
+	 * matcher "^".
+	 * 
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -1512,6 +1518,9 @@ public class PatternBuilder {
 	}
 
 	/**
+	 * Continues the description of the pattern inserting the end of line
+	 * matcher "$".
+	 * 
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -1522,6 +1531,12 @@ public class PatternBuilder {
 	}
 
 	/**
+	 * Starts the description of the pattern inserting the end of line
+	 * matcher "$".
+	 * 
+	 * I don't know if it makes sense to start the pattern with an end-of-line
+	 * boundary matcher.
+	 * 
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -1530,6 +1545,9 @@ public class PatternBuilder {
 	}
 
 	/**
+	 * Continues the description of the pattern inserting the word boundary
+	 * matcher "\\b".
+	 * 
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -1540,6 +1558,9 @@ public class PatternBuilder {
 	}
 
 	/**
+	 * Starts the description of the pattern inserting the word boundary
+	 * matcher "\\b".
+	 * 
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -1548,6 +1569,9 @@ public class PatternBuilder {
 	}
 
 	/**
+	 * Continues the description of the pattern inserting the non-word boundary
+	 * matcher "\\B".
+	 * 
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -1558,6 +1582,9 @@ public class PatternBuilder {
 	}
 
 	/**
+	 * Starts the description of the pattern inserting the non-word boundary
+	 * matcher "\\B".
+	 * 
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -1566,6 +1593,9 @@ public class PatternBuilder {
 	}
 
 	/**
+	 * Continues the description of the pattern inserting the beginning of
+	 * input matcher "\\A".
+	 * 
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -1576,6 +1606,9 @@ public class PatternBuilder {
 	}
 
 	/**
+	 * Starts the description of the pattern inserting the beginning of
+	 * input matcher "\\A".
+	 * 
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -1584,6 +1617,9 @@ public class PatternBuilder {
 	}
 
 	/**
+	 * Continues the description of the pattern inserting the end of previous
+	 * match matcher "\\G".
+	 * 
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -1594,6 +1630,12 @@ public class PatternBuilder {
 	}
 
 	/**
+	 * Starts the description of the pattern inserting the end of previous
+	 * match matcher "\\G".
+     *
+	 * I don't know if it makes sense to start the pattern with an end of
+	 * previous match boundary matcher.
+     *
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -1602,6 +1644,9 @@ public class PatternBuilder {
 	}
 
 	/**
+	 * Continues the description of the pattern inserting the end of input
+	 * (but the final terminator) matcher "\\Z".
+	 * 
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -1612,6 +1657,9 @@ public class PatternBuilder {
 	}
 
 	/**
+	 * Starts the description of the pattern inserting the end of input
+	 * (but the final terminator) matcher "\\Z".
+	 * 
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -1620,6 +1668,9 @@ public class PatternBuilder {
 	}
 
 	/**
+	 * Continues the description of the pattern inserting the end of input
+	 * matcher "\\z".
+	 * 
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -1630,6 +1681,9 @@ public class PatternBuilder {
 	}
 
 	/**
+	 * Starts the description of the pattern inserting the end of input
+	 * matcher "\\z".
+	 * 
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -1640,6 +1694,10 @@ public class PatternBuilder {
 	// Greedy quantifiers
 	
 	/**
+	 * Inserts the ? greedy quantifier indicating that the rightmost character
+	 * class or capturing group of the partial pattern might appear once or not
+	 * at all.
+	 * 
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -1650,6 +1708,10 @@ public class PatternBuilder {
 	}
 	
 	/**
+	 * Inserts the * greedy quantifier indicating that the rightmost character
+	 * class or capturing group of the partial pattern might appear zero or
+	 * more times.
+	 * 
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -1660,6 +1722,10 @@ public class PatternBuilder {
 	}
 
 	/**
+	 * Inserts the + greedy quantifier indicating that the rightmost character
+	 * class or capturing group of the partial pattern might appear one or
+	 * more times.
+	 * 
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -1670,7 +1736,11 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * @param n
+	 * Inserts the {n} greedy quantifier indicating that the rightmost
+	 * character class or capturing group of the partial pattern must appear
+	 * exactly n times.
+	 * 
+	 * @param n The amount of times that the pattern must be matched.
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -1681,7 +1751,11 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * @param n
+	 * Inserts the {n,} greedy quantifier indicating that the rightmost
+	 * character class or capturing group of the partial pattern must appear
+	 * at least n times.
+	 * 
+	 * @param n The least amount of times that the pattern must be matched.
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -1692,8 +1766,12 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * @param n
-	 * @param m
+	 * Inserts the {n,m} greedy quantifier indicating that the rightmost
+	 * character class or capturing group of the partial pattern must appear
+	 * at least n times, and at most m times.
+     *
+	 * @param n The minimum number of times that the pattern must be matched.
+	 * @param m The maximum number of times that the pattern can be matched.
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -1706,6 +1784,12 @@ public class PatternBuilder {
 	// Reluctant quantifiers
 	
 	/**
+	 * Inserts the ?? reluctant quantifier indicating that the rightmost
+	 * character class or capturing group of the partial pattern might appear
+	 * once or not at all, and that the lookup must be done reluctantly.
+	 * 
+	 * @see <a href="http://java.sun.com/docs/books/tutorial/essential/regex/quant.html">The Java Tutorials</a>
+	 * section on Quantifiers for an explanation on reluctant quantifiers.
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -1716,6 +1800,12 @@ public class PatternBuilder {
 	}
 	
 	/**
+	 * Inserts the *? reluctant quantifier indicating that the rightmost
+	 * character class or capturing group of the partial pattern might appear
+	 * zero or more times, and that the lookup must be done reluctantly.
+     *
+	 * @see <a href="http://java.sun.com/docs/books/tutorial/essential/regex/quant.html">The Java Tutorials</a>
+	 * section on Quantifiers for an explanation on reluctant quantifiers.
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -1726,6 +1816,12 @@ public class PatternBuilder {
 	}
 
 	/**
+	 * Inserts the +? reluctant quantifier indicating that the rightmost
+	 * character class or capturing group of the partial pattern might appear
+	 * one or more times, and that the lookup must be done reluctantly.
+	 * 
+	 * @see <a href="http://java.sun.com/docs/books/tutorial/essential/regex/quant.html">The Java Tutorials</a>
+	 * section on Quantifiers for an explanation on reluctant quantifiers.
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -1736,7 +1832,13 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * @param n
+	 * Inserts the {n}? reluctant quantifier indicating that the rightmost
+	 * character class or capturing group of the partial pattern must appear
+	 * exactly n times, and that the lookup must be done reluctantly.
+	 * 
+	 * @see <a href="http://java.sun.com/docs/books/tutorial/essential/regex/quant.html">The Java Tutorials</a>
+	 * section on Quantifiers for an explanation on reluctant quantifiers.
+	 * @param n The amount of times that the pattern must be matched.
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -1747,7 +1849,13 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * @param n
+	 * Inserts the {n,}? reluctant quantifier indicating that the rightmost
+	 * character class or capturing group of the partial pattern must appear
+	 * at least n times, and that the lookup must be done reluctantly.
+	 * 
+	 * @see <a href="http://java.sun.com/docs/books/tutorial/essential/regex/quant.html">The Java Tutorials</a>
+	 * section on Quantifiers for an explanation on reluctant quantifiers.
+	 * @param n The least amount of times that the pattern must be matched.
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -1758,8 +1866,15 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * @param n
-	 * @param m
+	 * Inserts the {n,m}? reluctant quantifier indicating that the rightmost
+	 * character class or capturing group of the partial pattern must appear
+	 * at least n times, and at most m times, and that the lookup must be done
+	 * reluctantly.
+     *
+	 * @see <a href="http://java.sun.com/docs/books/tutorial/essential/regex/quant.html">The Java Tutorials</a>
+	 * section on Quantifiers for an explanation on reluctant quantifiers.
+	 * @param n The minimum number of times that the pattern must be matched.
+	 * @param m The maximum number of times that the pattern can be matched.
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -1772,6 +1887,12 @@ public class PatternBuilder {
 	// Possessive quantifiers
 	
 	/**
+	 * Inserts the ?+ possesive quantifier indicating that the rightmost
+	 * character class or capturing group of the partial pattern might appear
+	 * once or not at all, and that the lookup must be done possessively.
+	 * 
+	 * @see <a href="http://java.sun.com/docs/books/tutorial/essential/regex/quant.html">The Java Tutorials</a>
+	 * section on Quantifiers for an explanation on possessive quantifiers.
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -1782,6 +1903,12 @@ public class PatternBuilder {
 	}
 	
 	/**
+	 * Inserts the *+ reluctant quantifier indicating that the rightmost
+	 * character class or capturing group of the partial pattern might appear
+	 * zero or more times, and that the lookup must be done possessively.
+     *
+	 * @see <a href="http://java.sun.com/docs/books/tutorial/essential/regex/quant.html">The Java Tutorials</a>
+	 * section on Quantifiers for an explanation on possessive quantifiers.
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -1792,6 +1919,12 @@ public class PatternBuilder {
 	}
 
 	/**
+	 * Inserts the ++ possessive quantifier indicating that the rightmost
+	 * character class or capturing group of the partial pattern might appear
+	 * one or more times, and that the lookup must be done possessively.
+	 * 
+	 * @see <a href="http://java.sun.com/docs/books/tutorial/essential/regex/quant.html">The Java Tutorials</a>
+	 * section on Quantifiers for an explanation on possessive quantifiers.
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -1802,7 +1935,13 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * @param n
+	 * Inserts the {n}+ possessive quantifier indicating that the rightmost
+	 * character class or capturing group of the partial pattern must appear
+	 * exactly n times, and that the lookup must be done possesively.
+	 * 
+	 * @see <a href="http://java.sun.com/docs/books/tutorial/essential/regex/quant.html">The Java Tutorials</a>
+	 * section on Quantifiers for an explanation on possessive quantifiers.
+	 * @param n The amount of times that the pattern must be matched.
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -1813,7 +1952,13 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * @param n
+	 * Inserts the {n,}+ possesive quantifier indicating that the rightmost
+	 * character class or capturing group of the partial pattern must appear
+	 * at least n times, and that the lookup must be done possesively.
+	 * 
+	 * @see <a href="http://java.sun.com/docs/books/tutorial/essential/regex/quant.html">The Java Tutorials</a>
+	 * section on Quantifiers for an explanation on possessive quantifiers.
+	 * @param n The least amount of times that the pattern must be matched.
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -1824,8 +1969,15 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * @param n
-	 * @param m
+	 * Inserts the {n,m}? possessive quantifier indicating that the rightmost
+	 * character class or capturing group of the partial pattern must appear
+	 * at least n times, and at most m times, and that the lookup must be done
+	 * possessively.
+     *
+	 * @see <a href="http://java.sun.com/docs/books/tutorial/essential/regex/quant.html">The Java Tutorials</a>
+	 * section on Quantifiers for an explanation on possessive quantifiers.
+	 * @param n The minimum number of times that the pattern must be matched.
+	 * @param m The maximum number of times that the pattern can be matched.
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -1838,7 +1990,12 @@ public class PatternBuilder {
 	// Logical operators
 
 	/**
-	 * @param patternBuilder
+	 * Appends the parameters's partial pattern of the parameter to the right
+	 * of the current instant partial pattern, indicating that the former
+	 * should follow the latter. 
+	 * 
+	 * @param patternBuilder The pattern that must follow the current partial
+	 * pattern.
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -1849,8 +2006,12 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * @param leftPatternBuilder
-	 * @param rightPatternBuilder
+	 * Builds a new pattern builder concatenating the two parameters two
+	 * indicate that the right pattern should follow the left pattern.
+	 * 
+	 * @param leftPatternBuilder The left pattern that should match.
+	 * @param rightPatternBuilder The pattern that should match after the left
+	 * pattern.
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -1859,7 +2020,12 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * @param patternBuilder
+	 * Appends the parameters's partial pattern of the parameter to the right
+	 * of the current instant partial pattern with the or "|" logical operator,
+	 * indicating that either pattern could match. 
+	 * 
+	 * @param patternBuilder The pattern that may match the in case the current
+	 * partial pattern doesn't.
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -1870,7 +2036,10 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * @param patternBuilder
+	 * Just a synonym for {@link #either(PatternBuilder)}
+	 * 
+	 * @param patternBuilder patternBuilder The pattern that may match the in case the current
+	 * partial pattern doesn't.
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -1881,8 +2050,11 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * @param leftPatternBuilder
-	 * @param rightPatternBuilder
+	 * A generalized version of {@link #either(PatternBuilder)} that builds a
+	 * disyunction pattern with all the partial patterns of the parameter
+	 * following the order on which they appear.
+	 * 
+	 * @param patternBuilders A list of partial patterns.
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -1903,7 +2075,18 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * @param patternBuilder
+	 * Continues building the partial pattern inserting a capturing group of
+	 * another partial pattern. For instance, the pattern "\\s*(\\w+)*" could
+	 * be constructed as:
+	 * 
+	 * Pattern pattern =
+	 *   whitespace().zeroOrMoreTimes()
+	 *   .followedByCapturingGroupOf(
+	 *     wordCharacter().oneOrMoreTimes()
+	 *   ).zeroOrMoreTimes().
+	 * 
+	 * @param patternBuilder A partial pattern that will be inserted in a
+	 * capturing group. 
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -1914,7 +2097,17 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * @param patternBuilder
+	 * Starts building the partial pattern inserting a capturing group of
+	 * another partial pattern. For instance, the pattern "([a-z]+){2}" could
+	 * be constructed as:
+	 * 
+	 * Pattern pattern =
+	 *   capturingGroupOf(
+	 *     anyInRange("a", "z").oneOrMoreTimes()
+	 *   ).exactly(2);
+	 * 
+	 * @param patternBuilder A partial pattern that will be inserted in a
+	 * capturing group. 
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
