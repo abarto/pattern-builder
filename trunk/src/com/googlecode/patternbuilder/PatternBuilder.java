@@ -587,7 +587,22 @@ public class PatternBuilder {
 	// Predefined character classes
 	
 	/**
-	 * @return
+	 * Continues the description of the pattern with the predefined character
+	 * class "." which indicates one occurence of character (which may or may
+	 * not include line terminators). For instance, the pattern "SH.T" can be
+	 * specified as follows: 
+	 * 
+	 * <pre>
+	 *   Pattern pattern =
+	 *     character("S")
+	 *     .followedByCharacter("H")
+	 *     .followedByAnyCharacter()
+	 *     .followedByCharacter("T")
+	 *     .compile();
+	 * </pre> 
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByAnyCharacter() {
 		partialPattern.append(".");
@@ -596,14 +611,43 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * @return
+	 * Starts the description of the pattern with the predefined character
+	 * class "." which indicates one occurence of character (which may or may
+	 * not include line terminators). For instance, the pattern ".UCK" can be
+	 * specified as follows: 
+	 * 
+	 * <pre>
+	 *   Pattern pattern =
+	 *     anyCharacter()
+	 *     .followedByCharacter("U")
+	 *     .followedByCharacter("C")
+	 *     .followedByCharacter("K")
+	 *     .compile();
+	 * </pre> 
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder anyCharacter() {
 		return new PatternBuilder().followedByAnyCharacter();
 	}
 	
 	/**
-	 * @return
+	 * Continues the description of the pattern with the predefined character
+	 * class "\d" which indicates one occurence of numeric character (digit).
+	 * For instance, the pattern "Route \\d\\d" can be specified as follows: 
+	 * 
+	 * <pre>
+	 *   Pattern pattern =
+	 *     characterSequence("Route")
+	 *     .followedByWhistespace()
+	 *     .followedByDigit()
+	 *     .followedByDigit()
+	 *     .compile();
+	 * </pre> 
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByDigit() {
 		partialPattern.append("\\d");
@@ -612,14 +656,29 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * @return
+	 * Start the description of the pattern with the predefined character
+	 * class "\d" which indicates one occurence of numeric character (digit).
+	 * For instance, the pattern "\\d+" can be specified as follows: 
+	 * 
+	 * <pre>
+	 *   Pattern pattern =
+	 *     digit()
+	 *     .oneOrMoreTimes();
+	 * </pre> 
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder digit() {
 		return new PatternBuilder().followedByDigit();
 	}
 
 	/**
-	 * @return
+	 * Continues the description of the pattern with the predefined character
+	 * class "\D" which indicates one occurence of any non-numeric character.
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByNonDigit() {
 		partialPattern.append("\\D");
@@ -628,14 +687,34 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * @return
+	 * Starts the description of the pattern with the predefined character
+	 * class "\D" which indicates one occurence of any non-numeric character.
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder nonDigit() {
 		return new PatternBuilder().followedByNonDigit();
 	}
 
 	/**
-	 * @return
+	 * Continues the description of the pattern with the predefined character
+	 * class "\s" which indicates one occurence of a whitespace character
+	 * (space, tab, new-line, etc.). For instance, the pattern
+	 * "spaces\\sin\\sbetween" can be specified as follows: 
+	 * 
+	 * <pre>
+	 *   Pattern pattern =
+	 *     characterSequence("spaces")
+	 *     .followedByWhistespace()
+	 *     .followedByCharacterSequence("in")
+	 *     .followedByWhistespace()
+	 *     .followedByCharacterSequence("between")
+	 *     .compile();
+	 * </pre> 
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByWhitespace() {
 		partialPattern.append("\\s");
@@ -644,14 +723,69 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * @return
+	 * Starts the description of the pattern with the predefined character
+	 * class "\s" which indicates one occurence of a whitespace character
+	 * (space, tab, new-line, etc.). For instance, the pattern
+	 * "\\s\\strim\\s" can be specified as follows: 
+	 * 
+	 * <pre>
+	 *   Pattern pattern =
+	 *     whitespace()
+	 *     .followedByWhistespace()
+	 *     .followedByCharacterSequence("trim")
+	 *     .followedByWhistespace()
+	 *     .compile();
+	 * </pre> 
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder whitespace() {
 		return new PatternBuilder().followedByWhitespace();
 	}
 	
 	/**
-	 * @return
+	 * Continues the description of the pattern with the predefined character
+	 * class "\S" which indicates one occurence of any character but a
+	 * whitespace (space, tab, new-line, etc.)
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
+	 */
+	public PatternBuilder followedByNonWhitespace() {
+		partialPattern.append("\\S");
+		
+		return this;
+	}
+	
+	/**
+	 * Starts the description of the pattern with the predefined character
+	 * class "\S" which indicates one occurence of any character but a
+	 * whitespace (space, tab, new-line, etc.)
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
+	 */
+	public static PatternBuilder nonWhitespace() {
+		return new PatternBuilder().followedByWhitespace();
+	}	
+	
+	/**
+	 * Continues the description of the pattern with the predefined character
+	 * class "\w" which indicates one occurence of a word character (a letter
+	 * or a number). For instance, the pattern "Rocky \\w" can be
+	 * specified as follows: 
+	 * 
+	 * <pre>
+	 *   Pattern pattern =
+	 *     characterSequence("Rocky")
+	 *     .followedByWhistespace()
+	 *     .followedByWordCharacter()
+	 *     .compile();
+	 * </pre> 
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByWordCharacter() {
 		partialPattern.append("\\w");
@@ -660,14 +794,32 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * @return
+	 * Starts the description of the pattern with the predefined character
+	 * class "\w" which indicates one occurence of a word character (a letter
+	 * or a number). For instance, the pattern "\\w{2,}" can be
+	 * specified as follows: 
+	 * 
+	 * <pre>
+	 *   Pattern pattern =
+	 *     wordCharacter()
+	 *     .atLeast(2)
+	 *     .compile();
+	 * </pre> 
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder wordCharacter() {
 		return new PatternBuilder().followedByWordCharacter();
 	}
 
 	/**
-	 * @return
+	 * Continues the description of the pattern with the predefined character
+	 * class "\W" which indicates one occurence of a non-word character
+	 * (anything but a letter or a number). 
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByNonWordCharacter() {
 		partialPattern.append("\\W");
@@ -676,7 +828,12 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * @return
+	 * Starts the description of the pattern with the predefined character
+	 * class "\W" which indicates one occurence of a non-word character
+	 * (anything but a letter or a number). 
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder nonWordCharacter() {
 		return new PatternBuilder().followedByNonWordCharacter();
