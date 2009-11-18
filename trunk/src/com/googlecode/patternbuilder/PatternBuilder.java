@@ -842,7 +842,11 @@ public class PatternBuilder {
 	// POSIX character classes
 	
 	/**
-	 * @return
+	 * Continues the description of the pattern with the predefined POSIX
+	 * character class "\p{Lower}" for lower case alphabetic characters. 
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByPosixLowerCaseAlphabeticCharacter() {
 		partialPattern.append("\\p{Lower}");
@@ -851,14 +855,22 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * @return
+	 * Starts the description of the pattern with the predefined POSIX
+	 * character class "\p{Lower}" for lower case alphabetic characters. 
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder posixLowerCaseAlphabeticCharacter() {
 		return new PatternBuilder().followedByPosixLowerCaseAlphabeticCharacter();
 	}
 
 	/**
-	 * @return
+	 * Continues the description of the pattern with the predefined POSIX
+	 * character class "\p{Upper}" for upper case alphabetic characters. 
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByPosixUpperCaseAlphabeticCharacter() {
 		partialPattern.append("\\p{Upper}");
@@ -867,14 +879,22 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * @return
+	 * Starts the description of the pattern with the predefined POSIX character
+	 * class "\p{Upper}" for upper case alphabetic characters. 
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder posixUpperCaseAlphabeticCharacter() {
 		return new PatternBuilder().followedByPosixUpperCaseAlphabeticCharacter();
 	}
 
 	/**
-	 * @return
+	 * Continues the description of the pattern with the predefined POSIX
+	 * character class "\p{ASCII}" for ASCII characters. 
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByPosixAsciiCharacter() {
 		partialPattern.append("\\p{ASCII}");
@@ -883,14 +903,22 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * @return
+	 * Starts the description of the pattern with the predefined POSIX
+	 * character class "\p{ASCII}" for ASCII characters. 
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder posixAsciiCharacter() {
 		return new PatternBuilder().followedByPosixAsciiCharacter();
 	}
 
 	/**
-	 * @return
+	 * Continues the description of the pattern with the predefined POSIX
+	 * character class "\p{Alpha}" for alphabetic characters. 
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByPosixAlphabeticCharacter() {
 		partialPattern.append("\\p{Alpha}");
@@ -899,14 +927,22 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * @return
+	 * Starts the description of the pattern with the predefined POSIX
+	 * character class "\p{Alpha}" for alphabetic characters. 
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder posixAlphabeticCharacter() {
 		return new PatternBuilder().followedByPosixAlphabeticCharacter();
 	}
 
 	/**
-	 * @return
+	 * Continues the description of the pattern with the predefined POSIX
+	 * character class "\p{Alnum}" for alphanumeric characters. 
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByPosixAlphanumericCharacter() {
 		partialPattern.append("\\p{Alnum}");
@@ -915,14 +951,22 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * @return
+	 * Starts the description of the pattern with the predefined POSIX
+	 * character class "\p{Alnum}" for alphanumeric characters. 
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder posixAlphanumericCharacter() {
 		return new PatternBuilder().followedByPosixAlphanumericCharacter();
 	}
 
 	/**
-	 * @return
+	 * Continues the description of the pattern with the predefined POSIX
+	 * character class "\p{Punct}" for punctuation characters. 
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByPosixPunctuationCharacter() {
 		partialPattern.append("\\p{Punct}");
@@ -931,14 +975,23 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * @return
+	 * Starts the description of the pattern with the predefined POSIX
+	 * character class "\p{Punct}" for punctuation characters. 
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder posixPunctuactionCharacter() {
 		return new PatternBuilder().followedByPosixAlphanumericCharacter();
 	}
 
 	/**
-	 * @return
+	 * Continues the description of the pattern with the predefined POSIX
+	 * character class "\p{Graph}" for visible (alphanumeric o punctuation)
+	 * characters. 
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByPosixVisibleCharacter() {
 		partialPattern.append("\\p{Graph}");
@@ -947,14 +1000,24 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * @return
+	 * Starts the description of the pattern with the predefined POSIX
+	 * character class "\p{Graph}" for visible (alphanumeric o punctuation)
+	 * characters. 
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder posixVisibleCharacter() {
 		return new PatternBuilder().followedByPosixVisibleCharacter();
 	}
 
 	/**
-	 * @return
+	 * Continues the description of the pattern with the predefined POSIX
+	 * character class "\p{Print}" for printable (visible o whitespace)
+	 * characters. 
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByPosixPrintableCharacter() {
 		partialPattern.append("\\p{Print}");
@@ -963,14 +1026,23 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * @return
+	 * Continues the description of the pattern with the predefined POSIX
+	 * character class "\p{Print}" for printable (visible o whitespace)
+	 * characters. 
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder posixPrintableCharacter() {
 		return new PatternBuilder().followedByPosixPrintableCharacter();
 	}
 
 	/**
-	 * @return
+	 * Continues the description of the pattern with the predefined POSIX
+	 * character class "\p{Blank}" for blank (space or tab) characters. 
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByPosixSpaceOrTabCharacter() {
 		partialPattern.append("\\p{Blank}");
@@ -979,14 +1051,22 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * @return
+	 * Starts the description of the pattern with the predefined POSIX
+	 * character class "\p{Blank}" for blank (space or tab) characters. 
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder posixSpaceOrTabCharacter() {
 		return new PatternBuilder().followedByPosixSpaceOrTabCharacter();
 	}
 
 	/**
-	 * @return
+	 * Continues the description of the pattern with the predefined POSIX
+	 * character class "\p{Cntrl}" for control characters. 
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByPosixControlCharacter() {
 		partialPattern.append("\\p{Cntrl}");
@@ -995,14 +1075,22 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * @return
+	 * Starts the description of the pattern with the predefined POSIX
+	 * character class "\p{Cntrl}" for control characters. 
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder posixControlCharacter() {
 		return new PatternBuilder().followedByPosixControlCharacter();
 	}
 
 	/**
-	 * @return
+	 * Continues the description of the pattern with the predefined POSIX
+	 * character class "\p{XDigit}" for hexadecimal digit characters. 
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByPosixHexadecimalDigit() {
 		partialPattern.append("\\p{XDigit}");
@@ -1011,14 +1099,22 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * @return
+	 * Starts the description of the pattern with the predefined POSIX
+	 * character class "\p{XDigit}" for hexadecimal digit characters. 
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder posixHexadecimalDigit() {
 		return new PatternBuilder().followedByPosixHexadecimalDigit();
 	}
 
 	/**
-	 * @return
+	 * Continues the description of the pattern with the predefined POSIX
+	 * character class "\p{Space}" for whitespace characters. 
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByPosixWhitespace() {
 		partialPattern.append("\\p{Space}");
@@ -1027,7 +1123,11 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * @return
+	 * Starts the description of the pattern with the predefined POSIX
+	 * character class "\p{Space}" for whitespace characters. 
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder posixWhitespace() {
 		return new PatternBuilder().followedByPosixWhitespace();
@@ -1036,7 +1136,12 @@ public class PatternBuilder {
 	// java.lang.Character classes
 	
 	/**
-	 * @return
+	 * Continues the description of the pattern with the predefined Java
+	 * character class "\p{javaLowerCase}" for characters for which
+	 * {@link Character#isLowerCase(char)} holds. 
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByJavaLowerCaseCharacter() {
 		partialPattern.append("\\p{javaLowerCase}");
@@ -1045,14 +1150,24 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * @return
+	 * Starts the description of the pattern with the predefined Java
+	 * character class "\p{javaLowerCase}" for characters for which
+	 * {@link Character#isLowerCase(char)} holds. 
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder javaLowerCaseCharacter() {
 		return new PatternBuilder().followedByJavaLowerCaseCharacter();
 	}
 	
 	/**
-	 * @return
+	 * Continues the description of the pattern with the predefined Java
+	 * character class "\p{javaUpperCase}" for characters for which
+	 * {@link Character#isUpperCase(char)} holds. 
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByJavaUpperCaseCharacter() {
 		partialPattern.append("\\p{javaUpperCase}");
@@ -1061,14 +1176,24 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * @return
+	 * Starts the description of the pattern with the predefined Java
+	 * character class "\p{javaUpperCase}" for characters for which
+	 * {@link Character#isUpperCase(char)} holds. 
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder javaUpperCaseCharacter() {
 		return new PatternBuilder().followedByJavaLowerCaseCharacter();
 	}
 
 	/**
-	 * @return
+	 * Continues the description of the pattern with the predefined Java
+	 * character class "\p{javaWhitespace}" for characters for which
+	 * {@link Character#isWhitespace(char)} holds. 
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByJavaWhitespaceCharacter() {
 		partialPattern.append("\\p{javaWhitespace}");
@@ -1077,14 +1202,24 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * @return
+	 * Starts the description of the pattern with the predefined Java
+	 * character class "\p{javaWhitespace}" for characters for which
+	 * {@link Character#isWhitespace(char)} holds. 
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder javaWhitespaceCharacter() {
 		return new PatternBuilder().followedByJavaWhitespaceCharacter();
 	}
 
 	/**
-	 * @return
+	 * Continues the description of the pattern with the predefined Java
+	 * character class "\p{javaMirrored}" for characters for which
+	 * {@link Character#isMirrored(char)} holds. 
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByJavaMirroredCharacter() {
 		partialPattern.append("\\p{javaMIrrored}");
@@ -1093,7 +1228,12 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * @return
+	 * Starts the description of the pattern with the predefined Java
+	 * character class "\p{javaMirrored}" for characters for which
+	 * {@link Character#isMirrored(char)} holds. 
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder javaMirroredCharacter() {
 		return new PatternBuilder().followedByJavaMirroredCharacter();
@@ -1102,7 +1242,11 @@ public class PatternBuilder {
 	// Classes for Unicode blocks and categories
 
 	/**
-	 * @return
+	 * Continues the description of the pattern with the predefined character
+	 * class "\p{InGreek}" for characters in the greek unicode block.
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByGreekBlockCharacter() {
 		partialPattern.append("\\p{InGreek}");
@@ -1111,14 +1255,22 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * @return
+	 * Starts the description of the pattern with the predefined character
+	 * class "\p{InGreek}" for characters in the greek unicode block.
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder greekBlockCharacter() {
 		return new PatternBuilder().followedByGreekBlockCharacter();
 	}
 
 	/**
-	 * @return
+	 * Continues the description of the pattern with the predefined character
+	 * class "\p{Lu}" for characters in the upper-case letter unicode block.
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByUppercaseLetterCharacter() {
 		partialPattern.append("\\p{Lu}");
@@ -1127,14 +1279,22 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * @return
+	 * Starts the description of the pattern with the predefined character
+	 * class "\p{Lu}" for characters in the upper-case letter unicode block.
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder upperCaseLetterCharacter() {
 		return new PatternBuilder().followedByUppercaseLetterCharacter();
 	}
 	
 	/**
-	 * @return
+	 * Continues the description of the pattern with the predefined character
+	 * class "\p{Sc}" for characters in the currency symbol unicode block.
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByCurrencySymbolCharacter() {
 		partialPattern.append("\\p{Sc}");
@@ -1143,14 +1303,22 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * @return
+	 * Starts the description of the pattern with the predefined character
+	 * class "\p{Sc}" for characters in the currency symbol unicode block.
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder currencySymbolCharacter() {
 		return new PatternBuilder().followedByCurrencySymbolCharacter();
 	}
 	
 	/**
-	 * @return
+	 * Continues the description of the pattern with the predefined character
+	 * class "\P{InGreek}" for characters outside the greek unicode block.
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByNonGreekBlockCharacter() {
 		partialPattern.append("\\P{InGreek}");
@@ -1159,14 +1327,23 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * @return
+	 * Starts the description of the pattern with the predefined character
+	 * class "\p{InGreek}" for characters outside the greek unicode block.
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder nonGreekBlockCharacter() {
 		return new PatternBuilder().followedByNonGreekBlockCharacter();
 	}
 	
 	/**
-	 * @return
+	 * Continues the description of the pattern with the predefined character
+	 * class "[\\p{L}&&[^\\p{Lu}]" for characters outside the upper-case letter unicode
+	 * block.
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByNonUppercaseLetterCharacter() {
 		partialPattern.append("[\\p{L}&&[^\\p{Lu}]");
@@ -1175,15 +1352,24 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * @return
+	 * Start the description of the pattern with the predefined character
+	 * class "[\\p{L}&&[^\\p{Lu}]" for characters outside the upper-case letter unicode
+	 * block.
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder nonUpperCaseLetterCharacter() {
 		return new PatternBuilder().followedByNonUppercaseLetterCharacter();
 	}
 	
 	/**
-	 * @param code
-	 * @return
+	 * Continues the description of the pattern with the predefined character
+	 * class "\\uC" for unicode characters of code C.
+	 * 
+	 * @param code The unicode code of the character.
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByUnicodeCharacter(int code) {
 		partialPattern.append("\\u" + code);
@@ -1192,16 +1378,25 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * @param code
-	 * @return
+	 * Starts the description of the pattern with the predefined character
+	 * class "\\uC" for unicode characters of code C.
+	 * 
+	 * @param code The unicode code of the character.
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder unicodeCharacter(int code) {
 		return new PatternBuilder().followedByUnicodeCharacter(code);
 	}
-	
+
 	/**
-	 * @param property
-	 * @return
+	 * Continues the description of the pattern with the predefined character
+	 * class "\\p{X}" for unicode characters in the block associated with the
+	 * property X.
+	 * 
+	 * @param property The property of the unicode character block.
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByUnicodeCharacterInBlock(String property) {
 		partialPattern.append("\\p{" + property + "}");
@@ -1210,58 +1405,87 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * @param property
-	 * @return
+	 * Starts the description of the pattern with the predefined character
+	 * class "\\p{X}" for unicode characters in the block associated with the
+	 * property X.
+	 * 
+	 * @param property The property of the unicode character block.
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder unicodeCharacterInBlock(String property) {
 		return new PatternBuilder().followedByUnicodeCharacterInBlock(property);
 	}
 	
 	/**
-	 * @param property
-	 * @return
+	 * Continues the description of the pattern with the predefined character
+	 * class "\\P{X}" for unicode characters outside the block associated with
+	 * the property X.
+	 * 
+	 * @param property The property of the unicode character block.
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByUnicodeCharacterOutsideBlock(String property) {
-		partialPattern.append("\\p{" + property + "}");
+		partialPattern.append("\\P{" + property + "}");
 		
 		return this;		
 	}
 
 	/**
-	 * @param property
-	 * @return
+	 * Starts the description of the pattern with the predefined character
+	 * class "\\P{X}" for unicode characters outside the block associated with
+	 * the property X.
+	 * 
+	 * @param property The property of the unicode character block.
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder unicodeCharacterOutsideBlock(String property) {
 		return new PatternBuilder().followedByUnicodeCharacterOutsideBlock(property);
 	}
 
 	/**
-	 * @param property
-	 * @return
+	 * Just a synonym for {@link #followedByUnicodeCharacterInBlock(String)}.
+	 * 
+	 * @param property The property of the unicode character block.
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByUnicodeCharacterInCategory(String property) {
 		return this.followedByUnicodeCharacterInBlock(property);		
 	}
 
 	/**
-	 * @param property
-	 * @return
+	 * Just a synonym for {@link #unicodeCharacterInBlock(String)}.
+	 * 
+	 * @param property The property of the unicode character block.
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder unicodeCharacterInCategory(String property) {
 		return new PatternBuilder().followedByUnicodeCharacterInBlock(property);
 	}
 	
 	/**
-	 * @param property
-	 * @return
+	 * Just a synonym for
+	 * {@link #followedByUnicodeCharacterOutsideBlock(String)}.
+	 * 
+	 * @param property The property of the unicode character block.
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByUnicodeCharacterOutsideCategory(String property) {
 		return this.followedByUnicodeCharacterOutsideBlock(property);
 	}
 
 	/**
-	 * @param property
-	 * @return
+	 * Just a synonym for
+	 * {@link #unicodeCharacterOutsideBlock(String)}.
+	 * 
+	 * @param property The property of the unicode character block.
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder unicodeCharacterOutsideCategory(String property) {
 		return new PatternBuilder().followedByUnicodeCharacterOutsideBlock(property);
@@ -1270,7 +1494,8 @@ public class PatternBuilder {
 	// Boundary matchers
 	
 	/**
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByBeginningOfLine() {
 		partialPattern.append("^");
@@ -1279,14 +1504,16 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder beginningOfLine() {
 		return new PatternBuilder().followedByBeginningOfLine();
 	}
 
 	/**
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByEndOfLine() {
 		partialPattern.append("$");
@@ -1295,14 +1522,16 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder endOfLine() {
 		return new PatternBuilder().followedByEndOfLine();
 	}
 
 	/**
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByWordBoundary() {
 		partialPattern.append("\\b");
@@ -1311,14 +1540,16 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder wordBoundary() {
 		return new PatternBuilder().followedByWordBoundary();
 	}
 
 	/**
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByNonWordBoundary() {
 		partialPattern.append("\\B");
@@ -1327,14 +1558,16 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder nonWordBoundary() {
 		return new PatternBuilder().followedByNonWordBoundary();
 	}
 
 	/**
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByBeginningOfInput() {
 		partialPattern.append("\\A");
@@ -1343,14 +1576,16 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder beginningOfInput() {
 		return new PatternBuilder().followedByBeginningOfInput();
 	}
 
 	/**
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByEndOfPreviousMatch() {
 		partialPattern.append("\\G");
@@ -1359,14 +1594,16 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder endOfPreviousMatch() {
 		return new PatternBuilder().followedByEndOfPreviousMatch();
 	}
 
 	/**
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByNonFinalTerminatorEndOfInput() {
 		partialPattern.append("\\Z");
@@ -1375,14 +1612,16 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder nonFinalTerminatorEndOfInput() {
 		return new PatternBuilder().followedByNonFinalTerminatorEndOfInput();
 	}
 
 	/**
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByEndOfInput() {
 		partialPattern.append("\\z");
@@ -1391,7 +1630,8 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder endOfInput() {
 		return new PatternBuilder().followedByEndOfInput();
@@ -1400,7 +1640,8 @@ public class PatternBuilder {
 	// Greedy quantifiers
 	
 	/**
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder onceOrNotAtAll() {
 		partialPattern.append("?");
@@ -1409,7 +1650,8 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder zeroOrMoreTimes() {
 		partialPattern.append("*");
@@ -1418,7 +1660,8 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder oneOrMoreTimes() {
 		partialPattern.append("+");
@@ -1428,7 +1671,8 @@ public class PatternBuilder {
 	
 	/**
 	 * @param n
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder exactly(int n) {
 		partialPattern.append("{" + n + "}");
@@ -1438,7 +1682,8 @@ public class PatternBuilder {
 	
 	/**
 	 * @param n
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder atLeast(int n) {
 		partialPattern.append("{" + n + ",}");
@@ -1449,7 +1694,8 @@ public class PatternBuilder {
 	/**
 	 * @param n
 	 * @param m
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder atLeastButNoMore(int n, int m) {
 		partialPattern.append("{" + n + "," + m + "}");
@@ -1460,7 +1706,8 @@ public class PatternBuilder {
 	// Reluctant quantifiers
 	
 	/**
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder onceOrNotAtAllReluctant() {
 		partialPattern.append("??");
@@ -1469,7 +1716,8 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder zeroOrMoreTimesReluctant() {
 		partialPattern.append("*?");
@@ -1478,7 +1726,8 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder oneOrMoreTimesReluctant() {
 		partialPattern.append("+?");
@@ -1488,7 +1737,8 @@ public class PatternBuilder {
 	
 	/**
 	 * @param n
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder exactlyReluctant(int n) {
 		partialPattern.append("{" + n + "}?");
@@ -1498,7 +1748,8 @@ public class PatternBuilder {
 	
 	/**
 	 * @param n
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder atLeastReluctant(int n) {
 		partialPattern.append("{" + n + ",}?");
@@ -1509,7 +1760,8 @@ public class PatternBuilder {
 	/**
 	 * @param n
 	 * @param m
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder atLeastButNoMoreReluctant(int n, int m) {
 		partialPattern.append("{" + n + "," + m + "}?");
@@ -1520,7 +1772,8 @@ public class PatternBuilder {
 	// Possessive quantifiers
 	
 	/**
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder onceOrNotAtAllPossessive() {
 		partialPattern.append("?+");
@@ -1529,7 +1782,8 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder zeroOrMoreTimesPossessive() {
 		partialPattern.append("*+");
@@ -1538,7 +1792,8 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder oneOrMoreTimesPossessive() {
 		partialPattern.append("++");
@@ -1548,7 +1803,8 @@ public class PatternBuilder {
 	
 	/**
 	 * @param n
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder exactlyPossessive(int n) {
 		partialPattern.append("{" + n + "}+");
@@ -1558,7 +1814,8 @@ public class PatternBuilder {
 	
 	/**
 	 * @param n
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder atLeastPossessive(int n) {
 		partialPattern.append("{" + n + ",}+");
@@ -1569,7 +1826,8 @@ public class PatternBuilder {
 	/**
 	 * @param n
 	 * @param m
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder atLeastButNoMorePossesive(int n, int m) {
 		partialPattern.append("{" + n + "," + m + "}+");
@@ -1581,7 +1839,8 @@ public class PatternBuilder {
 
 	/**
 	 * @param patternBuilder
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedBy(PatternBuilder patternBuilder) {
 		partialPattern.append(patternBuilder.partialPattern);
@@ -1592,7 +1851,8 @@ public class PatternBuilder {
 	/**
 	 * @param leftPatternBuilder
 	 * @param rightPatternBuilder
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder followedBy(PatternBuilder leftPatternBuilder, PatternBuilder rightPatternBuilder) {
 		return new PatternBuilder(leftPatternBuilder).followedBy(rightPatternBuilder);
@@ -1600,7 +1860,8 @@ public class PatternBuilder {
 	
 	/**
 	 * @param patternBuilder
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder either(PatternBuilder patternBuilder) {
 		partialPattern.append("|" + patternBuilder.partialPattern);
@@ -1610,7 +1871,8 @@ public class PatternBuilder {
 	
 	/**
 	 * @param patternBuilder
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder or(PatternBuilder patternBuilder) {
 		partialPattern.append("|" + patternBuilder.partialPattern);
@@ -1621,7 +1883,8 @@ public class PatternBuilder {
 	/**
 	 * @param leftPatternBuilder
 	 * @param rightPatternBuilder
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder either(PatternBuilder ... patternBuilders) {
 		PatternBuilder eitherPatternBuilder = null;
@@ -1641,7 +1904,8 @@ public class PatternBuilder {
 	
 	/**
 	 * @param patternBuilder
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByCapturingGroupOf(PatternBuilder patternBuilder) {
 		partialPattern.append("(" + patternBuilder.partialPattern + ")");
@@ -1651,7 +1915,8 @@ public class PatternBuilder {
 	
 	/**
 	 * @param patternBuilder
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder capturingGroupOf(PatternBuilder patternBuilder) {
 		return new PatternBuilder().followedByCapturingGroupOf(patternBuilder);
@@ -1661,7 +1926,8 @@ public class PatternBuilder {
 	
 	/**
 	 * @param group
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByCapturingGroupMatch(int group) {
 		partialPattern.append("\\" + group);
@@ -1671,7 +1937,8 @@ public class PatternBuilder {
 
 	/**
 	 * @param group
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder capturingGroupMatch(int group) {
 		return new PatternBuilder().followedByCapturingGroupMatch(group);
@@ -1680,7 +1947,8 @@ public class PatternBuilder {
 	// Quotation
 	
 	/**
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByQuote() {
 		partialPattern.append("\\");
@@ -1689,14 +1957,16 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder quote() {
 		return new PatternBuilder().followedByQuote();
 	}
 	
 	/**
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByQuoteStart() {
 		partialPattern.append("\\Q");
@@ -1705,14 +1975,16 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder quoteStart() {
 		return new PatternBuilder().followedByQuoteStart();
 	}
 
 	/**
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByQuoteEnd() {
 		partialPattern.append("\\E");
@@ -1721,7 +1993,8 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder quoteEnd() {
 		return new PatternBuilder().followedByQuoteEnd();
@@ -1731,7 +2004,8 @@ public class PatternBuilder {
 
 	/**
 	 * @param patternBuilder
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByNonCapturingGroupOf(PatternBuilder patternBuilder) {
 		partialPattern.append("(?:" + patternBuilder.partialPattern + ")");
@@ -1741,7 +2015,8 @@ public class PatternBuilder {
 	
 	/**
 	 * @param patternBuilder
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder nonCapturingGroupOf(PatternBuilder patternBuilder) {
 		return new PatternBuilder().followedByNonCapturingGroupOf(patternBuilder);
@@ -1749,7 +2024,8 @@ public class PatternBuilder {
 	
 	/**
 	 * @param flags
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder setFlags(String flags) {
 		partialPattern.append("(?" + flags + ")");
@@ -1759,7 +2035,8 @@ public class PatternBuilder {
 
 	/**
 	 * @param flags
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder unsetFlags(String flags) {
 		partialPattern.append("(?-" + flags + ")");
@@ -1770,7 +2047,8 @@ public class PatternBuilder {
 	/**
 	 * @param onFlags
 	 * @param offFlags
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder setFlags(String onFlags, String offFlags) {
 		partialPattern.append("(?" + onFlags + "-" + offFlags + ")");
@@ -1781,7 +2059,8 @@ public class PatternBuilder {
 	/**
 	 * @param patternBuilder
 	 * @param flags
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByNonCapturingGroupOf(PatternBuilder patternBuilder, String flags) {
 		partialPattern.append("(?" + flags + ":" + patternBuilder.partialPattern + ")");
@@ -1792,7 +2071,8 @@ public class PatternBuilder {
 	/**
 	 * @param patternBuilder
 	 * @param flags
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder nonCapturingGroupOf(PatternBuilder patternBuilder, String flags) {
 		return new PatternBuilder().followedByNonCapturingGroupOf(patternBuilder, flags);
@@ -1802,7 +2082,8 @@ public class PatternBuilder {
 	 * @param patternBuilder
 	 * @param onFlags
 	 * @param offFlags
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByNonCapturingGroupOf(PatternBuilder patternBuilder, String onFlags, String offFlags) {
 		partialPattern.append("(?" + onFlags + "-" + offFlags + ":" + patternBuilder.partialPattern + ")");
@@ -1814,7 +2095,8 @@ public class PatternBuilder {
 	 * @param patternBuilder
 	 * @param onFlags
 	 * @param offFlags
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder nonCapturingGroupOf(PatternBuilder patternBuilder, String onFlags, String offFlags) {
 		return new PatternBuilder().followedByNonCapturingGroupOf(patternBuilder, onFlags, offFlags);
@@ -1822,7 +2104,8 @@ public class PatternBuilder {
 
 	/**
 	 * @param patternBuilder
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByZeroWidthPositiveLookAheadOf(PatternBuilder patternBuilder) {
 		partialPattern.append("(?=" + patternBuilder.partialPattern + ")");
@@ -1832,7 +2115,8 @@ public class PatternBuilder {
 	
 	/**
 	 * @param patternBuilder
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder zeroWidthPositiveLookAheadOf(PatternBuilder patternBuilder) {
 		return new PatternBuilder().followedByZeroWidthPositiveLookAheadOf(patternBuilder);
@@ -1840,7 +2124,8 @@ public class PatternBuilder {
 
 	/**
 	 * @param patternBuilder
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByZeroWidthNegativeLookAheadOf(PatternBuilder patternBuilder) {
 		partialPattern.append("(?!" + patternBuilder.partialPattern + ")");
@@ -1850,7 +2135,8 @@ public class PatternBuilder {
 	
 	/**
 	 * @param patternBuilder
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder zeroWidthNegativeLookAheadOf(PatternBuilder patternBuilder) {
 		return new PatternBuilder().followedByZeroWidthNegativeLookAheadOf(patternBuilder);
@@ -1858,7 +2144,8 @@ public class PatternBuilder {
 	
 	/**
 	 * @param patternBuilder
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByZeroWidthPositiveLookBehindOf(PatternBuilder patternBuilder) {
 		partialPattern.append("(?<=" + patternBuilder.partialPattern + ")");
@@ -1868,7 +2155,8 @@ public class PatternBuilder {
 	
 	/**
 	 * @param patternBuilder
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder zeroWidthPositiveLookBehindOf(PatternBuilder patternBuilder) {
 		return new PatternBuilder().followedByZeroWidthPositiveLookBehindOf(patternBuilder);
@@ -1876,7 +2164,8 @@ public class PatternBuilder {
 
 	/**
 	 * @param patternBuilder
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByZeroWidthNegativeLookBehindOf(PatternBuilder patternBuilder) {
 		partialPattern.append("(?<!" + patternBuilder.partialPattern + ")");
@@ -1886,7 +2175,8 @@ public class PatternBuilder {
 	
 	/**
 	 * @param patternBuilder
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder zeroWidthNegativeLookBehindOf(PatternBuilder patternBuilder) {
 		return new PatternBuilder().followedByZeroWidthNegativeLookBehindOf(patternBuilder);
@@ -1894,7 +2184,8 @@ public class PatternBuilder {
 
 	/**
 	 * @param patternBuilder
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByIndependentNonCapturingGroupOf(PatternBuilder patternBuilder) {
 		partialPattern.append("(?>" + patternBuilder.partialPattern + ")");
@@ -1904,9 +2195,18 @@ public class PatternBuilder {
 	
 	/**
 	 * @param patternBuilder
-	 * @return
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder independentNonCapturingGroupOf(PatternBuilder patternBuilder) {
 		return new PatternBuilder().followedByIndependentNonCapturingGroupOf(patternBuilder);
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "PatternBuilder [partialPattern=" + partialPattern + "]";
 	}
 }
