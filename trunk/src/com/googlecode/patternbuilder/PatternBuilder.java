@@ -8,52 +8,125 @@ import java.util.regex.Pattern;
  * patterns explicit and self-documenting. The inspiration of this class is
  * Python's verbose regular expressions.
  * 
+ * The following example shows a complex regular expression pattern to describe
+ * valid roman numerals:
+ * 
+ * <pre>
+ *   // Roman numerals pattern - From Dive into Python 2.4
+ *   //
+ *   // '^M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$'
+ *   
+ *   Pattern romanNumeralsPattern =
+ *     beginningOfLine()
+ *     .followedByCharacter("M").atLeastButNoMore(0, 4)
+ *     .followedByCapturingGroupOf(
+ *       either(
+ *         characterSequence("CM"),
+ *         characterSequence("CD"),
+ *         character("D").onceOrNotAtAll()
+ *         .followedByCharacter("C").atLeastButNoMore(0, 3)
+ *       )
+ *     )
+ *     .followedByCapturingGroupOf(
+ *       either(
+ *         characterSequence("XC"),
+ *         characterSequence("XL"),
+ *         character("L").onceOrNotAtAll()
+ *         .followedByCharacter("X").atLeastButNoMore(0, 3)								
+ *       )
+ *     )
+ *     .followedByCapturingGroupOf(
+ *       either(
+ *         characterSequence("IX"),
+ *         characterSequence("IV"),
+ *         character("V").onceOrNotAtAll()
+ *         .followedByCharacter("I").atLeastButNoMore(0, 3)								
+ *       )
+ *     )
+ *     .followedByEndOfLine()
+ *     .compile();
+ * </pre> 
+ * 
+ * Not all of the expresiveness of the {@link Pattern} language is supported.
+ * Also notice that the same pattern can be constructed in different ways. For
+ * instance,
+ * 
+ * <pre>
+ *   Pattern pattern =
+ *     character("2")
+ *     .followedByCharacter("0")
+ *     .followedByCharacter("1")
+ *     .followedByCharacter("0")
+ *     .followedByWhitespace
+ *     .followedByCharacterClass(
+ *       anyInRange("A", "Z")
+ *     ).compile();
+ * </pre>
+ * 
+ * and
+ * 
+ * <pre>
+ *   Pattern pattern =
+ *     characterSequence("2010")
+ *     .followedByCharacter(" ")
+ *     .followedByCharacterClass(
+ *       anyInRange("A", "Z")
+ *     ).compile();
+ * </pre>
+ * 
+ * Both are compile to the same "2010 [A-Z]" pattern.
+ * 
  * @see Pattern
  * @author Agustin Barto <abarto@gmail.com>
  *
  */
 public class PatternBuilder {
 	/**
-	 * 
-	 */
-	public static final PatternBuilder PATTERN_START = new PatternBuilder();
-	
-	/**
-	 * 
+	 * A {@link StringBuilder} to hold the partial pattern as it is
+	 * constructed.
 	 */
 	private StringBuilder partialPattern;
 	
 	/**
-	 * 
+	 * Default no arguments constructor. An appropriate static builder method
+	 * should be used instead to start building the pattern.
 	 */
 	public PatternBuilder() {
 		partialPattern = new StringBuilder();
 	}
 	
 	/**
-	 * @param patternBuilder
+	 * A copy constructor. Builds a new instance copying the contents of
+	 * another.
+	 * 
+	 * @param patternBuilder The pattern builder to copy.
 	 */
 	public PatternBuilder(PatternBuilder patternBuilder) {
 		partialPattern = new StringBuilder(patternBuilder.partialPattern);
 	}
 	
 	/**
-	 * @return
-	 */
-	public static PatternBuilder patternStart() {
-		return new PatternBuilder();
-	}
-	
-	/**
-	 * @return
+	 * Generates a {@link Pattern} from the current {@link PatternBuilder}. A
+	 * call to this method marks the end of a construction sequence.
+	 * 
+	 * @return The pattern represented by the current status of the
+	 * {@link PatternBuilder} instance.
+	 * @see Pattern#compile(String)
 	 */
 	public Pattern compile() {
 		return Pattern.compile(partialPattern.toString());
 	}
 	
 	/**
-	 * @param flags
-	 * @return
+	 * Same as {@link #compile()} but supplying specific match flags to the
+	 * {@link Pattern#compile(String, int)} method.
+	 * 
+	 * @param flags The match flags to be passed to
+	 * {@link Pattern#compile(String, int)}. 
+	 * @return The pattern represented by the current status of the
+	 * {@link PatternBuilder} instance.
+	 * @see #compile()
+	 * @see Pattern#compile(String, int)
 	 */
 	public Pattern compile(int flags) {
 		return Pattern.compile(partialPattern.toString(), flags);
@@ -62,8 +135,23 @@ public class PatternBuilder {
 	// Character sequences
 	
 	/**
-	 * @param value
-	 * @return
+	 * Continues the description of the pattern with a character sequence. For
+	 * instance, to describe the pattern <code>"^\\d beers$"</code> we could use:
+	 * 
+	 * <pre>
+	 *   Pattern pattern =
+	 *     beginningOfLine()
+	 *       .followedByDigit()
+	 *       .followedByWhitespace()
+	 *       .followedByCharacterSequence("beers")
+	 *       .followedByEndOfLine()
+	 *       .compile();
+	 * </pre>
+	 * 
+	 * @param value The character sequence that continues the description of the
+	 * pattern.
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByCharacterSequence(CharSequence value) {
 		// TODO Add automatic escaping
@@ -73,8 +161,22 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * @param value
-	 * @return
+	 * Starts the description of the pattern with a character sequence. For
+	 * instance, to describe the pattern <code>"Hello, .*"</code> we could use:
+	 * 
+	 * <pre>
+	 *   Pattern pattern =
+	 *     characterSequence("Hello,")
+	 *     .followedByWhitespace()
+	 *     .followedByAnyCharacter()
+	 *     .zeroOrMoreTimes()
+	 *     .compile();
+	 * </pre>
+	 * 
+	 * @param value The character sequence that begins the description of the
+	 * pattern.
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder characterSequence(CharSequence value) {
 		return new PatternBuilder().followedByCharacterSequence(value);
@@ -83,8 +185,22 @@ public class PatternBuilder {
 	// Characters
 	
 	/**
-	 * @param value
-	 * @return
+	 * Continues the description of the pattern with a character. For instance,
+	 * to describe the pattern <code>"\\d\\dDD"</code> we could use:
+	 * 
+	 * <pre>
+	 *   Pattern pattern =
+	 *     digit()
+	 *       .followedByDigit()
+	 *       .followedByCharacter("D")
+	 *       .followedByCharacter("D")
+	 *       .compile();
+	 * </pre>
+	 * 
+	 * @param value The character that continues the description of the
+	 * pattern.
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByCharacter(String value) {
 		// TODO Add automatic escaping
@@ -94,15 +210,40 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * @param value
-	 * @return
+	 * Starts the description of the pattern with a character. For instance, to
+	 * describe the pattern <code>"I spy"</code> we could use:
+	 * 
+	 * <pre>
+	 *   Pattern pattern =
+	 *     character("I")
+	 *       .followedByWhitespace
+	 *       .followedByCharacterSequence("spy")
+	 *       .compile();
+	 * </pre>
+	 * 
+	 * @param value The character that starts the description of the
+	 * pattern.
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder character(String value) {
 		return new PatternBuilder().followedByCharacter(value);
 	}
 	
 	/**
-	 * @return
+	 * Continues the description of the pattern with a backslash "\"
+	 * character. For instance, to describe the pattern
+	 * <code>"backslash hell: \\\\"</code> we could use:
+	 * 
+	 * <pre>
+	 *   Pattern pattern =
+	 *     characterSequence("backslash hell: ")
+	 *       .followedByBackslashCharacter()
+	 *       .compile();
+	 * </pre>
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByBackslashCharacter() {
 		partialPattern.append("\\\\");
@@ -111,14 +252,39 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * @return
+	 * Starts the description of the pattern with a backslash "\" character.
+	 * For instance, to describe the pattern <code>"\\\\ not escaped"</code> we
+	 * could use:
+	 * 
+	 * <pre>
+	 *   Pattern pattern =
+	 *     backslashCharacter()
+	 *       .followedByCharacterSequence(" not escaped")
+	 *       .compile();
+	 * </pre>
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder backslashCharater() {
 		return new PatternBuilder().followedByBackslashCharacter();
 	}
 	
 	/**
-	 * @return
+	 * Continues the description of the pattern with a tab "\t" character.
+	 * For instance, to describe the pattern <code>"Population:\\t\\d"</code>
+	 * we could use:
+	 * 
+	 * <pre>
+	 *   Pattern pattern =
+	 *     characterSequence("Population")
+	 *       .followedByTabCharacter()
+	 *       .followedByDigit()
+	 *       .compile();
+	 * </pre>
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByTabCharacter() {
 		partialPattern.append("\\t");
@@ -127,14 +293,41 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * @return
+	 * Starts the description of the pattern with a tab "\t" character. For
+	 * instance, to describe the pattern <code>"\\t\\tTAB"</code> (notice that
+	 * the pattern starts with two tab characters) we could use:
+	 * 
+	 * <pre>
+	 *   Pattern pattern =
+	 *     tabCharacter()
+	 *       .followedByTabCharacter()
+	 *       .followedByCharacterSequence("TAB")
+	 *       .compile();
+	 * </pre>
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder tabCharacter() {
 		return new PatternBuilder().followedByTabCharacter();
 	}
 	
 	/**
-	 * @return
+	 * Continues the description of the pattern with a new-line "\n"
+	 * character. For instance, to describe the pattern
+	 * <code>"this\\nn that"</code> we could use:
+	 * 
+	 * <pre>
+	 *   Pattern pattern =
+	 *     characterSequence("this")
+	 *       .followedByNewlineCharacter()
+	 *       .followedByCharacter("n")
+	 *       .followedByCharacterSequence(" that")
+	 *       .compile();
+	 * </pre>
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByNewlineCharacter() {
 		partialPattern.append("\\n");
@@ -143,14 +336,34 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * @return
+	 * Starts the description of the pattern with a new-line "\n" character.
+	 * For instance, to describe the pattern <code>"\\nempty line above"</code>
+	 * we could use:
+	 * 
+	 * <pre>
+	 *   Pattern pattern =
+	 *     newLineCharacter()
+	 *       .followedByCharacterSequence("empty")
+	 *       .followedByWhitespace()
+	 *       .followedByCharacterSequence("line")
+	 *       .followedByWhitespace()
+	 *       .followedByCharacterSequence("above")
+	 *       .compile();
+	 * </pre>
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder newLineCharacter() {
 		return new PatternBuilder().followedByNewlineCharacter();
 	}
 	
 	/**
-	 * @return
+	 * Continues the description of the pattern with a carriage return "\r"
+	 * character.
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByCarriageReturnCharacter() {
 		partialPattern.append("\\r");
@@ -159,14 +372,22 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * @return
+	 * Starts the description of the pattern with a carriage return "\r"
+	 * character.
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder carriageReturnCharacter() {
 		return new PatternBuilder().followedByCarriageReturnCharacter();
 	}
 	
 	/**
-	 * @return
+	 * Continues the description of the pattern with a form-feed "\f"
+	 * character.
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByFormFeedCharacter() {
 		partialPattern.append("\\f");
@@ -175,14 +396,21 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * @return
+	 * Starts the description of the pattern with a form-feed "\f" character.
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder formFeedCharacter() {
 		return new PatternBuilder().followedByFormFeedCharacter();
 	}
 	
 	/**
-	 * @return
+	 * Continues the description of the pattern with an alert "\a"
+	 * character.
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByAlertCharacter() {
 		partialPattern.append("\\a");
@@ -191,14 +419,21 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * @return
+	 * Starts the description of the pattern with an alert "\a" character.
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder alertCharacter() {
 		return new PatternBuilder().followedByAlertCharacter();
 	}
 	
 	/**
-	 * @return
+	 * Continues the description of the pattern with an escape "\e"
+	 * character.
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public PatternBuilder followedByEscapeCharacter() {
 		partialPattern.append("\\e");
@@ -207,35 +442,63 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * @return
+	 * Starts the description of the pattern with an escape "\e" character.
+	 * 
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
 	public static PatternBuilder escapeCharacter() {
 		return new PatternBuilder().followedByEscapeCharacter();
 	}
 	
 	/**
-	 * @param value
-	 * @return
+	 * Continues the description of the pattern with a control "\cX"
+	 * character where X is a letter from "A" to "Z".
+     *
+	 * @param letter The letter of the control character.
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
-	public PatternBuilder followedByControlCharacter(String value) {
-		partialPattern.append("\\c" + value);
+	public PatternBuilder followedByControlCharacter(String letter) {
+		partialPattern.append("\\c" + letter);
 		
 		return this;
 	}
 	
 	/**
-	 * @param value
-	 * @return
+	 * Starts the description of the pattern with a control "\cX"
+	 * character where X is a letter from "A" to "Z".
+     *
+	 * @param letter The letter of the control character.
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
 	 */
-	public static PatternBuilder controlCharacter(String value) {
-		return new PatternBuilder().followedByControlCharacter(value);
+	public static PatternBuilder controlCharacter(String letter) {
+		return new PatternBuilder().followedByControlCharacter(letter);
 	}
 
 	// Character classes
 		
 	/**
-	 * @param characterClass
-	 * @return
+	 * Continues the description of the pattern with the inclusion of a
+	 * character class. Character classes can be specified literally or they
+	 * can be built using {@link CharacterClassBuilder}. For instance, the
+	 * pattern "\\d.*[A-C][D-F]" can be specified as follows:
+	 * 
+	 * <pre>
+	 *   Pattern pattern =
+	 *     digit()
+	 *     .followedByAnyCharacter().zeroOrMoreTimes()
+	 *     .followedByCharacterClass("[A-C]")
+	 *     .followedByCharacterClass(
+	 *       anyInRange("D", "F").compile()
+	 *     ).compile();
+	 * </pre>
+	 * 
+	 * @param characterClass The specification of a character class.
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
+	 * @see CharacterClassBuilder
 	 */
 	public PatternBuilder followedByCharacterClass(String characterClass) {
 		partialPattern.append(characterClass);
@@ -244,8 +507,26 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * @param characterClassBuilder
-	 * @return
+	 * Continues the description of the pattern with the inclusion of a
+	 * character class constructed using a {@link CharacterClassBuilder}. For
+	 * instance pattern "\\d.*[A-C][D-F]" can be specified as follows:
+	 * 
+	 * <pre>
+	 *   Pattern pattern =
+	 *     digit()
+	 *     .followedByAnyCharacter().zeroOrMoreTimes()
+	 *     .followedByCharacterClass(
+	 *       anyInRange("A", "C")
+	 *     )
+	 *     .followedByCharacterClass(
+	 *       anyInRange("D", "F")
+	 *     ).compile();
+	 * </pre> 
+	 * 
+	 * @param characterClassBuilder The partially constructed character class builder.
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
+	 * @see #followedByCharacterClass(String)
 	 */
 	public PatternBuilder followedByCharacterClass(CharacterClassBuilder characterClassBuilder) {
 		partialPattern.append(characterClassBuilder.compile());
@@ -253,18 +534,51 @@ public class PatternBuilder {
 		return this;
 	}
 
-
 	/**
-	 * @param characterClass
-	 * @return
+	 * Starts the description of the pattern with the inclusion of a
+	 * character class. Character classes can be specified literally or they
+	 * can be built using {@link CharacterClassBuilder}. For instance, the
+	 * pattern "[ABC].*[D-F]" can be specified as follows:
+	 * 
+	 * <pre>
+	 *   Pattern pattern =
+	 *     .characterClass("[ABC]")
+	 *     .followedByAnyCharacter().zeroOrMoreTimes()
+	 *     .followedByCharacterClass(
+	 *       anyInRange("D", "F")
+	 *     ).compile();
+	 * </pre>
+	 * 
+	 * @param characterClass The specification of a character class.
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
+	 * @see CharacterClassBuilder
 	 */
 	public static PatternBuilder characterClass(String characterClass) {
 		return new PatternBuilder().followedByCharacterClass(characterClass);
 	}
-	
+
 	/**
-	 * @param characterClassBuilder
-	 * @return
+	 * Starts the description of the pattern with the inclusion of a
+	 * character class. Character classes can be specified literally or they
+	 * can be built using {@link CharacterClassBuilder}. For instance, the
+	 * pattern "[ABC].*[D-F]" can be specified as follows:
+	 * 
+	 * <pre>
+	 *   Pattern pattern =
+	 *     .characterClass(
+	 *       anyOf("ABC")
+	 *     )
+	 *     .followedByAnyCharacter().zeroOrMoreTimes()
+	 *     .followedByCharacterClass(
+	 *       anyInRange("D", "F")
+	 *     ).compile();
+	 * </pre>
+	 * 
+	 * @param characterClassBuilder The partially constructed character class builder.
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
+	 * @see CharacterClassBuilder
 	 */
 	public static PatternBuilder characterClass(CharacterClassBuilder characterClassBuilder) {
 		return new PatternBuilder().followedByCharacterClass(characterClassBuilder);
