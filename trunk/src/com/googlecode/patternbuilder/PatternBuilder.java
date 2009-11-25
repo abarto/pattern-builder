@@ -2251,7 +2251,18 @@ public class PatternBuilder {
 	// Special constructs
 
 	/**
-	 * @param patternBuilder
+	 * Continues building the partial pattern inserting a non-capturing group of
+	 * another partial pattern. For instance, the pattern "\\s*(?:\\w+)*" could
+	 * be constructed as:
+	 * 
+     * Pattern pattern =
+	 *   whitespace().zeroOrMoreTimes()
+	 *   .followedByNonCapturingGroupOf(
+	 *     wordCharacter().oneOrMoreTimes()
+	 *   ).zeroOrMoreTimes().
+	 * 
+	 * @param patternBuilder A partial pattern that will be inserted in a
+	 * non-capturing group. 
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -2262,7 +2273,11 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * @param patternBuilder
+	 * Starts building the partial pattern inserting a non-capturing group of
+	 * another partial pattern.
+	 * 
+	 * @param patternBuilder A partial pattern that will be inserted in a
+	 * non-capturing group. 
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -2271,7 +2286,12 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * @param flags
+	 * Sets the flags that should be turned on to configure the rest of the
+	 * matching process.
+	 * 
+	 * @param flags An String that indicates which flags should be turned on.
+	 * @see Pattern#flags()
+	 * @see #setFlags(String, String)
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -2282,7 +2302,12 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * @param flags
+	 * Sets the flags that should be turned off to configure the rest of the
+	 * matching process.
+	 * 
+	 * @param flags An String that indicates which flags should be turned off.
+	 * @see Pattern#flags()
+	 * @see #setFlags(String, String)
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -2293,8 +2318,20 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * @param onFlags
-	 * @param offFlags
+	 * Sets or unsets the flags to configure the rest of the matching process.
+	 * The flags can be any one of:
+	 * 
+	 * <ul>
+	 * <li><code>i</code> - {@link Pattern#CASE_INSENSITIVE}</li>
+	 * <li><code>d</code> - {@link Pattern#UNIX_LINES}
+	 * <li><code>m</code> - {@link Pattern#MULTILINE}
+	 * <li><code>s</code> - {@link Pattern#DOTALL}
+	 * <li><code>u</code> - {@link Pattern#UNICODE_CASE}
+	 * <li><code>x</code> - {@link Pattern#COMMENTS}
+	 * </ul>
+	 * 
+	 * @param onFlags A string containing the flags that should be turned on.
+	 * @param offFlags A string containing the flags that should be turned off.
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
