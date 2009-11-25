@@ -2118,7 +2118,11 @@ public class PatternBuilder {
 	// Back references
 	
 	/**
-	 * @param group
+	 * Continues building the partial pattern inserting a back reference to a
+	 * capturing group to indicate that whatever the group matched, should be
+	 * matched again.
+	 * 
+	 * @param group The number of the capturing group to back-reference.
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -2129,7 +2133,11 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * @param group
+	 * Starts building the partial pattern inserting a back reference to a
+	 * capturing group to indicate that whatever the group matched, should be
+	 * matched again.
+	 * 
+	 * @param group The number of the capturing group to back-reference.
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -2140,6 +2148,17 @@ public class PatternBuilder {
 	// Quotation
 	
 	/**
+	 * Continues building the partial pattern inserting quote symbol ("\") to
+	 * indicate that the following character should be quoted. For example,
+	 * the pattern "^\\.$" could be constructed as follows:
+	 * 
+	 * Pattern pattern =
+	 *   beginningOfLine()
+	 *   .followedByQuote()
+	 *   .followedByCharacter(".")
+	 *   .followedByEndOfLine()
+	 *   .compile();
+	 * 
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -2150,6 +2169,15 @@ public class PatternBuilder {
 	}
 	
 	/**
+	 * Starts building the partial pattern inserting quote symbol ("\") to
+	 * indicate that the following character should be quoted. For example,
+	 * the pattern "\\^" could be constructed as follows:
+	 * 
+	 * Pattern pattern =
+	 *   quote()
+	 *   .followedByCharacter("^")
+	 *   .compile();
+	 * 
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -2158,6 +2186,19 @@ public class PatternBuilder {
 	}
 	
 	/**
+	 * Continues building the partial pattern inserting quote start symbol
+	 * ("\Q") to indicate that the following string (up to the next appearance
+	 * of a quote end symbol ("\E"), should be matched as-is. For instance, the
+	 * pattern "^\\Qinside quotes\\E" could be constructed as follows:
+	 * 
+	 * Pattern pattern =
+	 *   beginningOfLine()
+	 *   .followedByQuoteStart()
+	 *   .followedByCharacterSequence("inside quotes")
+	 *   .followedByQuoteEnd()
+	 *   .compile().
+	 * 
+	 * @see #followedByQuoteEnd()
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -2168,6 +2209,10 @@ public class PatternBuilder {
 	}
 	
 	/**
+	 * Starts building the partial pattern inserting quote start symbol ("\Q")
+	 * to indicate that the following string (up to the next appearance of a
+	 * quote end symbol ("\E"), should be matched as-is.
+	 * 
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -2176,6 +2221,11 @@ public class PatternBuilder {
 	}
 
 	/**
+	 * Continues building the partial pattern inserting quote end symbol
+	 * ("\E") to indicate that the preceding string, which should have been
+	 * preceded by a quote start symbol ("\Q"), should be matched as-is.
+	 * 
+	 * @see #followedByQuoteStart()
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -2186,6 +2236,11 @@ public class PatternBuilder {
 	}
 	
 	/**
+	 * Starts building the partial pattern inserting quote end symbol
+	 * ("\E") to indicate that the preceding string, which should have been
+	 * preceded by a quote start symbol ("\Q"), should be matched as-is.
+	 * 
+	 * @see #quoteStart()
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
