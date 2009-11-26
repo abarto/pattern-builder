@@ -2148,7 +2148,7 @@ public class PatternBuilder {
 	// Quotation
 	
 	/**
-	 * Continues building the partial pattern inserting quote symbol ("\") to
+	 * Continues building the partial pattern inserting quote symbol "\" to
 	 * indicate that the following character should be quoted. For example,
 	 * the pattern "^\\.$" could be constructed as follows:
 	 * 
@@ -2169,7 +2169,7 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * Starts building the partial pattern inserting quote symbol ("\") to
+	 * Starts building the partial pattern inserting quote symbol "\" to
 	 * indicate that the following character should be quoted. For example,
 	 * the pattern "\\^" could be constructed as follows:
 	 * 
@@ -2187,8 +2187,8 @@ public class PatternBuilder {
 	
 	/**
 	 * Continues building the partial pattern inserting quote start symbol
-	 * ("\Q") to indicate that the following string (up to the next appearance
-	 * of a quote end symbol ("\E"), should be matched as-is. For instance, the
+	 * "\Q" to indicate that the following string (up to the next appearance
+	 * of a quote end symbol "\E", should be matched as-is. For instance, the
 	 * pattern "^\\Qinside quotes\\E" could be constructed as follows:
 	 * 
 	 * Pattern pattern =
@@ -2209,9 +2209,9 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * Starts building the partial pattern inserting quote start symbol ("\Q")
+	 * Starts building the partial pattern inserting quote start symbol "\Q"
 	 * to indicate that the following string (up to the next appearance of a
-	 * quote end symbol ("\E"), should be matched as-is.
+	 * quote end symbol "\E", should be matched as-is.
 	 * 
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
@@ -2221,9 +2221,9 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * Continues building the partial pattern inserting quote end symbol
-	 * ("\E") to indicate that the preceding string, which should have been
-	 * preceded by a quote start symbol ("\Q"), should be matched as-is.
+	 * Continues building the partial pattern inserting quote end symbol "\E"
+	 * to indicate that the preceding string, which should have been preceded
+	 * by a quote start symbol "\Q", should be matched as-is.
 	 * 
 	 * @see #followedByQuoteStart()
 	 * @return The current partially constructed {@link PatternBuilder}
@@ -2236,9 +2236,9 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * Starts building the partial pattern inserting quote end symbol
-	 * ("\E") to indicate that the preceding string, which should have been
-	 * preceded by a quote start symbol ("\Q"), should be matched as-is.
+	 * Starts building the partial pattern inserting quote end symbol "\E" to
+	 * indicate that the preceding string, which should have been preceded by a
+	 * quote start symbol "\Q", should be matched as-is.
 	 * 
 	 * @see #quoteStart()
 	 * @return The current partially constructed {@link PatternBuilder}
@@ -2342,8 +2342,25 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * @param patternBuilder
-	 * @param flags
+	 * Continues building the partial pattern inserting a non-capturing group of
+	 * another partial pattern while setting the flags that configures the way
+	 * on which the group is matched. The flags are specified as a string like
+	 * "idmsux-idmsux" where every character before the dash indicates that the
+	 * flag should be turned on, and the rest should be turned off. For
+	 * instance, the pattern "\\s*(?i-d:\\w+)*" could
+	 * be constructed as:
+	 * 
+     * Pattern pattern =
+	 *   whitespace().zeroOrMoreTimes()
+	 *   .followedByNonCapturingGroupOf(
+	 *     wordCharacter().oneOrMoreTimes(),
+	 *     "i-d"
+	 *   ).zeroOrMoreTimes().
+	 * 
+	 * @param patternBuilder A partial pattern that will be inserted in a
+	 * non-capturing group. 
+	 * @param flags A string indicating which flags should be turned on and
+	 * which should be turned off.
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -2354,8 +2371,15 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * @param patternBuilder
-	 * @param flags
+	 * Starts building the partial pattern inserting a non-capturing group of
+	 * another partial pattern while setting the flags that configures the way
+	 * on which the group is matched.
+	 * 
+	 * @see #followedByNonCapturingGroupOf(PatternBuilder, String)
+	 * @param patternBuilder A partial pattern that will be inserted in a
+	 * non-capturing group. 
+	 * @param flags A string indicating which flags should be turned on and
+	 * which should be turned off.
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -2364,9 +2388,25 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * @param patternBuilder
-	 * @param onFlags
-	 * @param offFlags
+	 * Continues building the partial pattern inserting a non-capturing group of
+	 * another partial pattern while setting the flags that configures the way
+	 * on which the group is matched. It's similar to {@link #followedByNonCapturingGroupOf(PatternBuilder, String)},
+	 * but in this method it is possible to provide the on and off flags as
+	 * separated parameters. For instance, the pattern "\\s*(?i-d:\\w+)*" could
+	 * be constructed as:
+     *
+     * Pattern pattern =
+	 *   whitespace().zeroOrMoreTimes()
+	 *   .followedByNonCapturingGroupOf(
+	 *     wordCharacter().oneOrMoreTimes(),
+	 *     "i", "d"
+	 *   ).zeroOrMoreTimes().
+     *
+     * @see #followedByNonCapturingGroupOf(PatternBuilder, String)
+	 * @param patternBuilder patternBuilder A partial pattern that will be
+	 * inserted in a non-capturing group.
+	 * @param onFlags Indicates which flags should be turned on.
+	 * @param offFlags Indicates which fags should be turned off.
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -2377,9 +2417,17 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * @param patternBuilder
-	 * @param onFlags
-	 * @param offFlags
+	 * Starts building the partial pattern inserting a non-capturing group of
+	 * another partial pattern while setting the flags that configures the way
+	 * on which the group is matched. It's similar to {@link #nonCapturingGroupOf(PatternBuilder, String)},
+	 * but in this method it is possible to provide the on and off flags as
+	 * separated parameters.
+     *
+     * @see #nonCapturingGroupOf(PatternBuilder, String)
+	 * @param patternBuilder patternBuilder A partial pattern that will be
+	 * inserted in a non-capturing group.
+	 * @param onFlags Indicates which flags should be turned on.
+	 * @param offFlags Indicates which fags should be turned off.
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -2388,7 +2436,12 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * @param patternBuilder
+	 * Continues building the partial pattern inserting a non-capturing group of
+	 * another partial pattern indicating that it should be matched using a
+	 * zero-width positive look ahead.
+	 * 
+	 * @param patternBuilder patternBuilder A partial pattern that will be
+	 * inserted in a non-capturing group.
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -2399,7 +2452,12 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * @param patternBuilder
+	 * Starts building the partial pattern inserting a non-capturing group of
+	 * another partial pattern indicating that it should be matched using a
+	 * zero-width positive look ahead.
+	 * 
+	 * @param patternBuilder patternBuilder A partial pattern that will be
+	 * inserted in a non-capturing group.
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -2408,7 +2466,12 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * @param patternBuilder
+	 * Continues building the partial pattern inserting a non-capturing group of
+	 * another partial pattern indicating that it should be matched using a
+	 * zero-width negative look ahead.
+	 * 
+	 * @param patternBuilder patternBuilder A partial pattern that will be
+	 * inserted in a non-capturing group.
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -2419,7 +2482,12 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * @param patternBuilder
+	 * Starts building the partial pattern inserting a non-capturing group of
+	 * another partial pattern indicating that it should be matched using a
+	 * zero-width negative look ahead.
+	 * 
+	 * @param patternBuilder patternBuilder A partial pattern that will be
+	 * inserted in a non-capturing group.
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -2428,7 +2496,12 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * @param patternBuilder
+	 * Continues building the partial pattern inserting a non-capturing group of
+	 * another partial pattern indicating that it should be matched using a
+	 * zero-width positive look behind.
+	 * 
+	 * @param patternBuilder patternBuilder A partial pattern that will be
+	 * inserted in a non-capturing group.
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -2439,7 +2512,12 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * @param patternBuilder
+	 * Starts building the partial pattern inserting a non-capturing group of
+	 * another partial pattern indicating that it should be matched using a
+	 * zero-width positive look behind.
+	 * 
+	 * @param patternBuilder patternBuilder A partial pattern that will be
+	 * inserted in a non-capturing group.
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -2448,7 +2526,12 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * @param patternBuilder
+	 * Continues building the partial pattern inserting a non-capturing group of
+	 * another partial pattern indicating that it should be matched using a
+	 * zero-width negative look behind.
+	 * 
+	 * @param patternBuilder patternBuilder A partial pattern that will be
+	 * inserted in a non-capturing group.
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -2459,7 +2542,12 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * @param patternBuilder
+	 * Starts building the partial pattern inserting a non-capturing group of
+	 * another partial pattern indicating that it should be matched using a
+	 * zero-width negative look behind.
+	 * 
+	 * @param patternBuilder patternBuilder A partial pattern that will be
+	 * inserted in a non-capturing group.
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -2468,7 +2556,13 @@ public class PatternBuilder {
 	}
 
 	/**
-	 * @param patternBuilder
+	 * Continues building the partial pattern inserting an independent
+	 * non-capturing group of another partial pattern indicating that the group
+	 * is atomic and all tracking information will be discarded once the parser
+	 * exits the group.
+	 * 
+	 * @param patternBuilder patternBuilder A partial pattern that will be
+	 * inserted in a non-capturing group.
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
@@ -2479,7 +2573,13 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * @param patternBuilder
+	 * Starts building the partial pattern inserting an independent
+	 * non-capturing group of another partial pattern indicating that the group
+	 * is atomic and all tracking information will be discarded once the parser
+	 * exits the group.
+	 * 
+	 * @param patternBuilder patternBuilder A partial pattern that will be
+	 * inserted in a non-capturing group.
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
 	 */
