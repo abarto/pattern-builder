@@ -47,7 +47,7 @@ import java.util.regex.Pattern;
  *     .compile();
  * </pre> 
  * 
- * Not all of the expresiveness of the {@link Pattern} language is supported.
+ * Not all of the expressiveness of the {@link Pattern} language is supported.
  * Also notice that the same pattern can be constructed in different ways. For
  * instance,
  * 
@@ -216,7 +216,7 @@ public class PatternBuilder {
 	 * <pre>
 	 *   Pattern pattern =
 	 *     character("I")
-	 *       .followedByWhitespace
+	 *       .followedByWhitespace()
 	 *       .followedByCharacterSequence("spy")
 	 *       .compile();
 	 * </pre>
@@ -588,7 +588,7 @@ public class PatternBuilder {
 	
 	/**
 	 * Continues the description of the pattern with the predefined character
-	 * class "." which indicates one occurence of character (which may or may
+	 * class "." which indicates one occurrence of character (which may or may
 	 * not include line terminators). For instance, the pattern "SH.T" can be
 	 * specified as follows: 
 	 * 
@@ -612,7 +612,7 @@ public class PatternBuilder {
 	
 	/**
 	 * Starts the description of the pattern with the predefined character
-	 * class "." which indicates one occurence of character (which may or may
+	 * class "." which indicates one occurrence of character (which may or may
 	 * not include line terminators). For instance, the pattern ".UCK" can be
 	 * specified as follows: 
 	 * 
@@ -634,7 +634,7 @@ public class PatternBuilder {
 	
 	/**
 	 * Continues the description of the pattern with the predefined character
-	 * class "\d" which indicates one occurence of numeric character (digit).
+	 * class "\d" which indicates one occurrence of numeric character (digit).
 	 * For instance, the pattern "Route \\d\\d" can be specified as follows: 
 	 * 
 	 * <pre>
@@ -657,7 +657,7 @@ public class PatternBuilder {
 	
 	/**
 	 * Start the description of the pattern with the predefined character
-	 * class "\d" which indicates one occurence of numeric character (digit).
+	 * class "\d" which indicates one occurrence of numeric character (digit).
 	 * For instance, the pattern "\\d+" can be specified as follows: 
 	 * 
 	 * <pre>
@@ -675,7 +675,7 @@ public class PatternBuilder {
 
 	/**
 	 * Continues the description of the pattern with the predefined character
-	 * class "\D" which indicates one occurence of any non-numeric character.
+	 * class "\D" which indicates one occurrence of any non-numeric character.
 	 * 
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
@@ -688,7 +688,7 @@ public class PatternBuilder {
 	
 	/**
 	 * Starts the description of the pattern with the predefined character
-	 * class "\D" which indicates one occurence of any non-numeric character.
+	 * class "\D" which indicates one occurrence of any non-numeric character.
 	 * 
 	 * @return The current partially constructed {@link PatternBuilder}
 	 * instance.
@@ -699,7 +699,7 @@ public class PatternBuilder {
 
 	/**
 	 * Continues the description of the pattern with the predefined character
-	 * class "\s" which indicates one occurence of a whitespace character
+	 * class "\s" which indicates one occurrence of a whitespace character
 	 * (space, tab, new-line, etc.). For instance, the pattern
 	 * "spaces\\sin\\sbetween" can be specified as follows: 
 	 * 
@@ -724,7 +724,7 @@ public class PatternBuilder {
 	
 	/**
 	 * Starts the description of the pattern with the predefined character
-	 * class "\s" which indicates one occurence of a whitespace character
+	 * class "\s" which indicates one occurrence of a whitespace character
 	 * (space, tab, new-line, etc.). For instance, the pattern
 	 * "\\s\\strim\\s" can be specified as follows: 
 	 * 
@@ -746,7 +746,7 @@ public class PatternBuilder {
 	
 	/**
 	 * Continues the description of the pattern with the predefined character
-	 * class "\S" which indicates one occurence of any character but a
+	 * class "\S" which indicates one occurrence of any character but a
 	 * whitespace (space, tab, new-line, etc.)
 	 * 
 	 * @return The current partially constructed {@link PatternBuilder}
@@ -760,7 +760,7 @@ public class PatternBuilder {
 	
 	/**
 	 * Starts the description of the pattern with the predefined character
-	 * class "\S" which indicates one occurence of any character but a
+	 * class "\S" which indicates one occurrence of any character but a
 	 * whitespace (space, tab, new-line, etc.)
 	 * 
 	 * @return The current partially constructed {@link PatternBuilder}
@@ -772,7 +772,7 @@ public class PatternBuilder {
 	
 	/**
 	 * Continues the description of the pattern with the predefined character
-	 * class "\w" which indicates one occurence of a word character (a letter
+	 * class "\w" which indicates one occurrence of a word character (a letter
 	 * or a number). For instance, the pattern "Rocky \\w" can be
 	 * specified as follows: 
 	 * 
@@ -795,7 +795,7 @@ public class PatternBuilder {
 
 	/**
 	 * Starts the description of the pattern with the predefined character
-	 * class "\w" which indicates one occurence of a word character (a letter
+	 * class "\w" which indicates one occurrence of a word character (a letter
 	 * or a number). For instance, the pattern "\\w{2,}" can be
 	 * specified as follows: 
 	 * 
@@ -815,7 +815,7 @@ public class PatternBuilder {
 
 	/**
 	 * Continues the description of the pattern with the predefined character
-	 * class "\W" which indicates one occurence of a non-word character
+	 * class "\W" which indicates one occurrence of a non-word character
 	 * (anything but a letter or a number). 
 	 * 
 	 * @return The current partially constructed {@link PatternBuilder}
@@ -829,7 +829,7 @@ public class PatternBuilder {
 
 	/**
 	 * Starts the description of the pattern with the predefined character
-	 * class "\W" which indicates one occurence of a non-word character
+	 * class "\W" which indicates one occurrence of a non-word character
 	 * (anything but a letter or a number). 
 	 * 
 	 * @return The current partially constructed {@link PatternBuilder}
@@ -1887,7 +1887,7 @@ public class PatternBuilder {
 	// Possessive quantifiers
 	
 	/**
-	 * Inserts the ?+ possesive quantifier indicating that the rightmost
+	 * Inserts the ?+ possessive quantifier indicating that the rightmost
 	 * character class or capturing group of the partial pattern might appear
 	 * once or not at all, and that the lookup must be done possessively.
 	 * 
@@ -1937,7 +1937,7 @@ public class PatternBuilder {
 	/**
 	 * Inserts the {n}+ possessive quantifier indicating that the rightmost
 	 * character class or capturing group of the partial pattern must appear
-	 * exactly n times, and that the lookup must be done possesively.
+	 * exactly n times, and that the lookup must be done possessively.
 	 * 
 	 * @see <a href="http://java.sun.com/docs/books/tutorial/essential/regex/quant.html">The Java Tutorials</a>
 	 * section on Quantifiers for an explanation on possessive quantifiers.
@@ -1952,9 +1952,9 @@ public class PatternBuilder {
 	}
 	
 	/**
-	 * Inserts the {n,}+ possesive quantifier indicating that the rightmost
+	 * Inserts the {n,}+ possessive quantifier indicating that the rightmost
 	 * character class or capturing group of the partial pattern must appear
-	 * at least n times, and that the lookup must be done possesively.
+	 * at least n times, and that the lookup must be done possessively.
 	 * 
 	 * @see <a href="http://java.sun.com/docs/books/tutorial/essential/regex/quant.html">The Java Tutorials</a>
 	 * section on Quantifiers for an explanation on possessive quantifiers.
@@ -2051,7 +2051,7 @@ public class PatternBuilder {
 	
 	/**
 	 * A generalized version of {@link #either(PatternBuilder)} that builds a
-	 * disyunction pattern with all the partial patterns of the parameter
+	 * disjunction pattern with all the partial patterns of the parameter
 	 * following the order on which they appear.
 	 * 
 	 * @param patternBuilders A list of partial patterns.
