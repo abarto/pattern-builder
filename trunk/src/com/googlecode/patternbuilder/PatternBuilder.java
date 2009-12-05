@@ -584,6 +584,62 @@ public class PatternBuilder {
 		return new PatternBuilder().followedByCharacterClass(characterClassBuilder);
 	}
 	
+	/**
+	 * Convenience method to start building the pattern adding a simple
+	 * character class.
+	 * 
+	 * @param characters The characters that should be included in the
+	 * character class.
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
+	 * @see CharacterClassBuilder#anyOf(String)
+	 */
+	public static PatternBuilder anyOf(String characters) {	
+		return new PatternBuilder().followedByCharacterClass(CharacterClassBuilder.anyOf(characters));
+	}
+	
+	/**
+	 * Convenience method to continue building the pattern adding a simple
+	 * character class.
+	 * 
+	 * @param characters The characters that should be included in the
+	 * character class.
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
+	 * @see CharacterClassBuilder#anyOf(String)
+	 */
+	public PatternBuilder followedByAnyOf(String characters) {
+		return this.followedByCharacterClass(CharacterClassBuilder.anyOf(characters));
+	}
+
+	/**
+	 * Convenience method to start building the pattern adding a range
+	 * character class.
+	 * 
+	 * @param start The start of the character range.
+	 * @param end The end of the character range.
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
+	 * @see CharacterClassBuilder#anyInRange(String)
+	 */
+	public static PatternBuilder anyInRange(String start, String end) {	
+		return new PatternBuilder().followedByCharacterClass(CharacterClassBuilder.anyInRange(start, end));
+	}
+	
+	/**
+	 * Convenience method to continue building the pattern adding a range
+	 * character class.
+	 * 
+	 * @param start The start of the character range.
+	 * @param end The end of the character range.
+	 * @return The current partially constructed {@link PatternBuilder}
+	 * instance.
+	 * @see CharacterClassBuilder#anyInRange(String)
+	 */
+	public PatternBuilder followedByAnyInRange(String start, String end) {
+		return this.followedByCharacterClass(CharacterClassBuilder.anyInRange(start, end));
+	}
+	
 	// Predefined character classes
 	
 	/**
